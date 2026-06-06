@@ -42,6 +42,21 @@ pipeline {
                 }
             }
         }
+
+        stage('Deploy') {
+            steps {
+                sshagent(['deploy-ssh-key']) {
+                    sh """
+                        ssh -o StrictHostKeyChecking=no ubuntu@3.90.20.201 '
+                            docker pull zulfikarwim/cicd-jenkins:latest &&
+                            docker stop app || true &&
+                            docker rm app || true &&
+                            docker run -d --name app -p 3000:3000 zulfikarwim/cicd-jenkins:latest
+                        '
+                    """
+                }
+            }
+        }
     }
 
     post {
