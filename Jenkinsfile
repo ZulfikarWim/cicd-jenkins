@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    options {
+        disableConcurrentBuilds()
+    }
+
     environment {
         IMAGE_NAME = "zulfikarwim/cicd-jenkins"
         IMAGE_TAG  = "${BUILD_NUMBER}"
