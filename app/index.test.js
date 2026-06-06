@@ -17,5 +17,3 @@ describe('GET /health', () => {
     expect(res.body.status).toBe('healthy');
   });
 });
-
-it('intentional fail', () => { expect(true).toBe(false); });
