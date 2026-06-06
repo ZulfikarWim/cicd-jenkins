@@ -51,7 +51,7 @@ pipeline {
             steps {
                 sshagent(['deploy-ssh-key']) {
                     sh """
-                        ssh -o StrictHostKeyChecking=no ubuntu@3.90.20.201 '
+                        ssh -o StrictHostKeyChecking=no ubuntu@100.31.50.31 '
                             docker pull zulfikarwim/cicd-jenkins:latest
                             docker stop app 2>/dev/null || true
                             docker rm -f app 2>/dev/null || true
