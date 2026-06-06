@@ -50,7 +50,7 @@ pipeline {
                         ssh -o StrictHostKeyChecking=no ubuntu@3.90.20.201 '
                             docker pull zulfikarwim/cicd-jenkins:latest
                             docker stop app 2>/dev/null || true
-                            docker rm app 2>/dev/null || true
+                            docker rm -f app 2>/dev/null || true
                             docker run -d --name app -p 3000:3000 zulfikarwim/cicd-jenkins:latest
                         '
                     """
